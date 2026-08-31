@@ -34,6 +34,14 @@ echo "Fetching K4H818-update ..."
 wget -q -O "$INSTALL_DIR/K4H818-update" "$GITHUB_BASE/K4H818-update.py"
 chmod +x "$INSTALL_DIR/K4H818-update"
 
+# K4H818_example.ini: always fetched fresh too, same as the two
+# utilities above. Safe to always overwrite -- it's explicitly the
+# EXAMPLE/template file, never a live config a user has customized.
+# K4H818-prog reads a separate K4H818.ini for that, which this never
+# touches.
+echo "Fetching K4H818_example.ini ..."
+wget -q -O "$INSTALL_DIR/K4H818_example.ini" "$GITHUB_BASE/K4H818_example.ini"
+
 echo ""
 echo "Done. Run with:"
 echo "  K4H818-prog"
