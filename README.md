@@ -1,0 +1,1 @@
+These utilities are used with the Kits 4 Hams K4H818 radio module.  K4H818-update.py is used to update the firmware in the module.  K4H818-prog.py is used to change radio setting such as RF frequency, squelch, PL tone, etc.
