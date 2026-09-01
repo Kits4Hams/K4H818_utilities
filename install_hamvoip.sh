@@ -21,6 +21,16 @@ else
     pacman -Sy --noconfirm avrdude
 fi
 
+# pyserial: K4H818-prog can't run at all without it. Checked at the
+# Python level (actually trying the import) rather than via the package
+# manager, since that's the one true test of whether it'll actually work.
+if python3 -c "import serial" 2>/dev/null; then
+    echo "pyserial already installed, skipping."
+else
+    echo "pyserial not found -- installing..."
+    pacman -Sy --noconfirm python-pyserial
+fi
+
 # K4H818-prog and K4H818-update: always fetched fresh and overwritten,
 # every run -- no version check needed. Fetched from GitHub under their
 # real .py names, but saved locally WITHOUT an extension, matching

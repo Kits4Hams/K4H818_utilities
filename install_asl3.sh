@@ -27,6 +27,17 @@ else
     sudo apt-get install -y avrdude
 fi
 
+# pyserial: K4H818-prog can't run at all without it. Checked at the
+# Python level (actually trying the import) rather than via the package
+# manager, since that's the one true test of whether it'll actually work.
+if python3 -c "import serial" 2>/dev/null; then
+    echo "pyserial already installed, skipping."
+else
+    echo "pyserial not found -- installing (will prompt for your password)..."
+    sudo apt-get update
+    sudo apt-get install -y python3-serial
+fi
+
 # K4H818-prog.py and K4H818-update.py: always fetched fresh and
 # overwritten, every run -- no version check needed. Re-running this
 # same installer later is exactly how these two stay up to date.
